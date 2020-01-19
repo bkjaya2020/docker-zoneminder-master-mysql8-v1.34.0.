@@ -14,7 +14,7 @@ sudo docker start zm</code>
 
 (You will have to configure the running zm container for mysql 8 ,zm data base and make some changes to start apache and zoneminder during the first run .)
 
-sudo docker exec -t -i zm /bin/bash
+<code>sudo docker exec -t -i zm /bin/bash</code>
 
 (Now  you will be with in the zm container.
 
@@ -91,7 +91,7 @@ sudo gedit ~/Downloads/bash.bashrc</code>
 
 sudo docker exec -t -i zm /bin/bash</code>
 
-http://localhost:8080/zm/
+<code>http://localhost:8080/zm/</code>
 
 (Note:- Each time , you start the container ,you will have to run " sudo docker exec -t -i zm /bin/bash"  after "sudo docker start zm"  to get the ZM Console)
 
