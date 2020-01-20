@@ -60,7 +60,7 @@ apt install vim
 
 vim /etc/apache2/apache2.conf
 
-# Enter the following line at the bottom of the opened file and save the file by entering :x
+ Enter the following line at the bottom of the opened file and save the file by entering :x
 
 ServerName localhost</code>
 
