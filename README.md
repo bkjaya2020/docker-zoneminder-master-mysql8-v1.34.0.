@@ -12,19 +12,19 @@ To create a Zonminder-master docker container (name zm)with mysql 8 & msmtp
 
 On the Ubuntu terminal enter the following commands
 
-sudo docker create -t -p 8080:80 --shm-size=4096m --name zm --privileged=true bkjaya1952/docker-zoneminder-master-mysql8:tag
+<code>sudo docker create -t -p 8080:80 --shm-size=4096m --name zm --privileged=true bkjaya1952/docker-zoneminder-master-mysql8:tag
 
-sudo docker start zm
+sudo docker start zm</code>
 
 (You will have to configure the running zm container for mysql 8 ,zm data base and make some changes to start apache and zoneminder during the first run .)
 
-sudo docker exec -t -i zm /bin/bash
+<code>sudo docker exec -t -i zm /bin/bash</code>
 
 (Now you will be with in the zm container.
 
 Make changes as follows)
 
-/etc/init.d/mysql start
+<code>/etc/init.d/mysql start
 
 chown -R www-data:www-data /var/run/zm
 
@@ -64,13 +64,13 @@ sudo docker cp zm:/etc/apache2/apache2.conf ~/Downloads
 
 sudo chmod -R 777 ~/Downloads/apache2.conf
 
-sudo gedit ~/Downloads/apache2.conf
+sudo gedit ~/Downloads/apache2.conf</code>
 
 Enter the following line at the bottom of the opened file and save the file
 
-ServerName localhost
+<code>ServerName localhost
 
-sudo docker cp ~/Downloads/apache2.conf zm:/etc/apache2/apache2.conf
+sudo docker cp ~/Downloads/apache2.conf zm:/etc/apache2/apache2.conf</code>
 
 (As the apache service and zoneminder do not in running condition , when the zm container is started , we will have to edit the file "/etc/bash.bashrc" . For editing bash.bashrc is copied to the host and copied back to the container "zm" after making changes as follows. You will have to make these changes at the first time running only. )
 
@@ -78,45 +78,47 @@ Note:- bash.bashrc file editing is not necessary for the bkjaya1952/docker-zonem
 
 (Open the Ubuntu terminal at the host)
 
-sudo docker cp zm:/etc/bash.bashrc ~/Downloads ( Here i have copied the file to the Downloads folder of the computer)
+<code>sudo docker cp zm:/etc/bash.bashrc ~/Downloads</code>
+
+( Here i have copied the file to the Downloads folder of the computer)
 
 (If go the Downloads folder, you can see the copied "bash.bashrc" file)
 
 (In order to make changes to "bash.bashrc")
 
-sudo chmod -R 777 ~/Downloads/bash.bashrc
+<code>sudo chmod -R 777 ~/Downloads/bash.bashrc
 
-sudo gedit ~/Downloads/bash.bashrc
+sudo gedit ~/Downloads/bash.bashrc</code>
 
 (Now enter the following three lines at the bottom of the opened "bash.bashrc" file and save.)
 
-/etc/init.d/mysql start
+<code>/etc/init.d/mysql start
 
 /etc/init.d/apache2 start
 
-/usr/bin/zmpkg.pl start
+/usr/bin/zmpkg.pl start</code>
 
 (To copy back the edited "bash.bashrc" to /etc/ of the container "zm" , run the following command on the terminal)
 
-sudo docker cp ~/Downloads/bash.bashrc zm:/etc/
+<code>sudo docker cp ~/Downloads/bash.bashrc zm:/etc/</code>
 
 (Now you can restart the container to see whether the zoneminder is active as follows)
 
-sudo docker restart zm
+<code>sudo docker restart zm
 
 sudo docker exec -t -i zm /bin/bash
 
-http://localhost:8080/zm/
+http://localhost:8080/zm/</code>
 
 Note:- If you find any timezone mismatch in zoneminder logs , correct it as follows.( ie for America/New_York )
 
 On the ubuntu terminal
 
-sudo docker start zm
+<code>sudo docker start zm
 
 sudo docker exec -t -i zm /bin/bash
 
-dpkg-reconfigure tzdata
+dpkg-reconfigure tzdata</code>
 
 Then edit your timezone
 
