@@ -28,9 +28,9 @@ Make changes as follows)
 
 chown -R www-data:www-data /var/run/zm
 
-mysql
+mysql</code>
 
-CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+<code>CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
 
 GRANT ALL PRIVILEGES ON zm.* TO 'admin'@'localhost' WITH GRANT OPTION;
 
