@@ -29,17 +29,17 @@ Make changes as follows)
 
 <code>/etc/init.d/mysql start
 
-chown -R www-data:www-data /var/run/zm
+chown -R www-data:www-data /var/run/zm</code>
 
-mysql
+<code>mysql</code>
 
-CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+<code>CREATE USER 'admin'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
 
 GRANT ALL PRIVILEGES ON zm.* TO 'admin'@'localhost' WITH GRANT OPTION;
 
-FLUSH PRIVILEGES ;
+FLUSH PRIVILEGES ;</code>
 
-quit
+<code>quit
 
 mysqladmin -uroot -p reload
 
